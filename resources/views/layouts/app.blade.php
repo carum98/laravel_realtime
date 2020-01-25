@@ -71,6 +71,7 @@
         </nav>
 
         <main class="py-4">
+            <div id="notification" class="alert invisible mx-3">Test</div>
             @yield('content')
         </main>
 
