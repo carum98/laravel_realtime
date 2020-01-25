@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GreatingSent;
 use App\Events\MessageSend;
+use App\User;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -38,5 +40,13 @@ class ChatController extends Controller
         broadcast(new MessageSend($request->user(), $request->message));
 
         return response()->json('Message broadcast');
+    }
+
+    public function greetReceived(Request $request, User $user)
+    {
+        broadcast(new GreatingSent($user, "{$request->user()->name} greeted you"));
+        broadcast(new GreatingSent($request->user(), "you greeted {$user->name}"));
+
+        return "Greeting {$user->name} from {$request->user()->name}";
     }
 }
