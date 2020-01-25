@@ -76,8 +76,8 @@
         </main>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        @stack('script')
+        <script src="{{ asset('js/app.js') }}"></script>
+        @stack('scripts')
     </div>
 </body>
 </html>
